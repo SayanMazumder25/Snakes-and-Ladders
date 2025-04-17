@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    gap: 2rem;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.game-info {
+    width: 300px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 60px);
+    grid-template-rows: repeat(10, 60px);
+    gap: 1px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #1a472a;
+    position: relative;
+}
+
+.cell {
+    background: #90EE90;  /* Light green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Alternating cell colors */
+.cell:nth-child(odd) {
+    background: #2E8B57;  /* Dark green */
+}
+
+/* Trophy for cell 100 */
+#cell-100::before {
+    content: '🏆';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 16px;
+}
+
+.player-piece {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s ease;
+    z-index: 3;
+}
+
+.player1-piece {
+    background: #ff4444;
+    border: 2px solid #cc0000;
+    left: 10px;
+}
+
+.player2-piece {
+    background: #4444ff;
+    border: 2px solid #0000cc;
+    right: 10px;
+}
+
+.dice-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dice {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 0 auto 10px;
+    transition: transform 0.3s ease;
+}
+
+.dice.rolling {
+    animation: roll 0.6s ease;
+}
+
+@keyframes roll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.player-info {
+    margin: 20px 0;
+}
+
+.player {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.player1 {
+    background: #ffebee;
+}
+
+.player2 {
+    background: #e3f2fd;
+}
+
+#message {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+.winner {
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    animation: winner 1s infinite;
+}
+
+@keyframes winner {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Add these styles to your existing CSS */
+.snake-cell {
+    position: relative;
+}
+
+.snake-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.postimg.cc/jLhJSbpX/snake.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ladder-cell {
+    position: relative;
+}
+
+.ladder-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.postimg.cc/bZDDHtG6/ladder.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
